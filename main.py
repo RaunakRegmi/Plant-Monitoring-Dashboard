@@ -13,39 +13,43 @@ st.set_page_config(
 # Custom CSS for white theme and readable buttons/expanders
 st.markdown("""
     <style>
-    /* === Base App Styling === */
+    /* === Base Page === */
     .stApp {
         background-color: white;
         color: black;
     }
 
-    /* General Text Styling */
+    /* Global text colors */
     h1, h2, h3, h4, h5, h6, p, div, span, label {
         color: black !important;
     }
 
-    /* === BUTTONS (All buttons including camera input) === */
-    div.stButton > button, div[data-testid="stCameraInput"] > button {
-        background-color: #f0f0f0 !important;  /* Light gray */
+    /* === BUTTONS (includes all Streamlit buttons & camera input) === */
+    div.stButton > button,
+    div[data-testid="stCameraInput"] button {
+        background-color: white !important;
         color: black !important;
         border: 1px solid #ccc !important;
         border-radius: 8px !important;
-        transition: all 0.3s ease !important;
         font-weight: 500 !important;
         padding: 0.5rem 1rem !important;
+        transition: all 0.3s ease !important;
     }
 
-    /* Hover effect for all buttons */
-    div.stButton > button:hover, div[data-testid="stCameraInput"] > button:hover {
-        background-color: #4CAF50 !important;  /* Green hover */
+    /* Hover state for all buttons */
+    div.stButton > button:hover,
+    div[data-testid="stCameraInput"] button:hover {
+        background-color: #4CAF50 !important;
         color: white !important;
         border: 1px solid #4CAF50 !important;
     }
 
     /* === EXPANDERS (Plant Controls) === */
-    .streamlit-expanderHeader {
-        background-color: #f0f0f0 !important;  /* Match button color */
-        color: black !important;               /* Visible text */
+    .streamlit-expanderHeader,
+    div[data-testid="stExpander"] > div > button,
+    details > summary {
+        background-color: white !important;
+        color: black !important;
         border: 1px solid #ccc !important;
         border-radius: 8px !important;
         font-weight: 500 !important;
@@ -53,21 +57,25 @@ st.markdown("""
         transition: all 0.3s ease !important;
     }
 
-    /* Hover effect for expander headers (like buttons) */
-    .streamlit-expanderHeader:hover {
-        background-color: #4CAF50 !important;  /* Green hover */
-        color: white !important;               /* White text */
+    /* Expander hover & expanded effect */
+    .streamlit-expanderHeader:hover,
+    div[data-testid="stExpander"] > div > button:hover,
+    details > summary:hover,
+    [aria-expanded="true"],
+    details[open] > summary {
+        background-color: #4CAF50 !important;
+        color: white !important;
         border: 1px solid #4CAF50 !important;
     }
 
-    /* Inside of the expanded area */
+    /* Inside expanded area */
     .streamlit-expanderContent {
         background-color: white !important;
         border-left: 2px solid #4CAF50 !important;
         padding: 1rem !important;
     }
 
-    /* === ALERT / STATUS BOXES === */
+    /* === Alerts / status boxes === */
     .stAlert > div {
         border-radius: 8px !important;
         font-weight: 500 !important;
@@ -78,29 +86,28 @@ st.markdown("""
         background-color: #dff0d8 !important;
         border: 1px solid #4CAF50 !important;
     }
-
     .stInfo > div {
         background-color: #d9edf7 !important;
         border: 1px solid #2196F3 !important;
     }
-
     .stWarning > div {
         background-color: #fff3cd !important;
         border: 1px solid #ff9800 !important;
     }
-
     .stError > div {
         background-color: #f8d7da !important;
         border: 1px solid #f44336 !important;
     }
 
-    /* === Container Padding === */
+    /* Layout spacing */
     .block-container {
         padding-top: 1rem;
         padding-bottom: 0.5rem;
     }
     </style>
 """, unsafe_allow_html=True)
+
+
 
 
 # Initialize session state
